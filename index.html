@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratiksha Dandriyal — Data Analyst</title>
+<meta name="description" content="Pratiksha Dandriyal — Data Analyst specialising in SQL Server, Power BI, Python and DAX. Portfolio of end-to-end analytics projects.">
+<meta name="author" content="Pratiksha Dandriyal">
+<meta property="og:title" content="Pratiksha Dandriyal — Data Analyst">
+<meta property="og:description" content="End-to-end analytics from data modeling and ETL pipelines to interactive Power BI dashboards. SQL Server · Power BI · Python · DAX.">
+<meta property="og:image" content="profile_picture.jpeg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pratikshadandriyal.github.io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pratiksha Dandriyal — Data Analyst">
+<meta name="twitter:description" content="End-to-end analytics from data modeling and ETL pipelines to interactive Power BI dashboards.">
+<meta name="twitter:image" content="profile_picture.jpeg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23080E1C'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23E8B84B'>P</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#080E1C;--navy2:#0D1628;--navy3:#111f3a;
+  --gold:#C9952A;--gold-light:#E8B84B;--gold-pale:#F5DFA0;--gold-dim:#7a5a18;
+  --cream:#F4EDD8;--cream2:#EDE0C4;--white:#FAFAF8;
+  --muted:#8B9CC4;--muted2:#5C6E96;
+  --border:rgba(201,149,42,0.18);--border2:rgba(201,149,42,0.38);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--cream);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(201,149,42,0.5);border-radius:50%;pointer-events:none;z-index:9998;transition:width 0.2s,height 0.2s,opacity 0.2s}
+.cursor-ring.hover{width:52px;height:52px;opacity:0.5;border-color:var(--gold)}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(201,149,42,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,149,42,0.025) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(8,14,28,0.97),transparent);backdrop-filter:blur(4px)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold-light);letter-spacing:0.05em;text-decoration:none}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-links a:hover::after{width:100%}
+
+section{position:relative;z-index:1;padding:120px 60px}
+.container{max-width:1100px;margin:0 auto}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:0 60px;overflow:hidden}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:11px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:20px;opacity:0;animation:fadeUp 0.8s 0.2s forwards}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+h1.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,7vw,96px);font-weight:300;line-height:0.95;color:var(--white);letter-spacing:-0.02em;opacity:0;animation:fadeUp 0.8s 0.35s forwards}
+h1.hero-name em{font-style:italic;color:var(--gold-light);display:block}
+.hero-tagline{font-size:15px;font-weight:300;color:var(--muted);line-height:1.8;margin:26px 0 36px;max-width:520px;opacity:0;animation:fadeUp 0.8s 0.5s forwards}
+.hero-tagline strong{color:var(--cream);font-weight:400}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 0.65s forwards}
+.hero-photo-wrap{opacity:0;animation:fadeLeft 0.9s 0.5s forwards;flex-shrink:0}
+.hero-photo-ring{width:284px;height:284px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative}
+.hero-photo-ring::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px dashed rgba(201,149,42,0.15);animation:spinRing 30s linear infinite}
+.hero-photo{width:260px;height:260px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--border2);box-shadow:0 0 0 8px rgba(201,149,42,0.06),0 0 60px rgba(201,149,42,0.08);display:block}
+@keyframes spinRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.btn-primary{padding:13px 28px;background:var(--gold);color:var(--navy);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background 0.25s,transform 0.2s}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{padding:13px 28px;border:1px solid var(--border2);color:var(--cream);font-size:12px;font-weight:300;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:border-color 0.25s,color 0.25s,transform 0.2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-2px)}
+.scroll-hint{position:absolute;bottom:36px;left:60px;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted2);opacity:0;animation:fadeUp 1s 1.2s forwards}
+.scroll-line{width:40px;height:1px;background:var(--muted2);position:relative;overflow:hidden}
+.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:scrollAnim 2s 1.5s infinite}
+
+/* ABOUT */
+#about{border-top:1px solid var(--border)}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:52px}
+.section-label::before{content:'';width:32px;height:1px;background:var(--gold)}
+.about-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,54px);font-weight:300;line-height:1.15;color:var(--white);letter-spacing:-0.01em;max-width:700px}
+.about-heading em{font-style:italic;color:var(--gold-light)}
+.about-text{font-size:15px;color:var(--muted);line-height:1.9;margin-top:28px;max-width:720px}
+
+/* SKILLS */
+#skills{background:var(--navy2);border-top:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:52px}
+.skill-category{background:var(--navy3);border:1px solid var(--border);border-radius:3px;padding:28px 30px;transition:border-color 0.3s}
+.skill-category:hover{border-color:var(--border2)}
+.skill-cat-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tag{font-size:12px;font-weight:400;padding:6px 14px;border-radius:2px;border:1px solid var(--border);color:var(--cream2);background:rgba(255,255,255,0.02);transition:border-color 0.25s,color 0.25s,background 0.25s}
+.skill-tag:hover{border-color:var(--gold-dim);color:var(--gold-pale);background:rgba(201,149,42,0.06)}
+
+/* EXPERIENCE */
+#experience{border-top:1px solid var(--border)}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:40px 0;border-top:1px solid var(--border)}
+.exp-item:last-child{border-bottom:1px solid var(--border)}
+.exp-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:0.08em}
+.exp-company{font-size:13px;color:var(--muted);margin-top:4px}
+.exp-type{display:inline-block;margin-top:8px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border:1px solid var(--border);border-radius:2px;color:var(--muted2)}
+.exp-role{font-size:19px;font-weight:400;color:var(--white);margin-bottom:14px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:11px}
+.exp-bullets li{font-size:13px;color:var(--muted);line-height:1.75;padding-left:18px;position:relative}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--gold);font-size:10px;top:4px}
+
+/* PROJECTS */
+#projects{background:var(--navy2);border-top:1px solid var(--border)}
+.proj-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:48px;overflow-x:auto}
+.proj-tab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:14px 28px;color:var(--muted2);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;transition:color 0.25s,border-color 0.25s;white-space:nowrap}
+.proj-tab.active{color:var(--gold-light);border-bottom-color:var(--gold)}
+.proj-tab:hover:not(.active){color:var(--muted)}
+.proj-panel{display:none}
+.proj-panel.active{display:block}
+.proj-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.proj-images{display:flex;flex-direction:column;gap:12px}
+.proj-img-main{width:100%;border-radius:4px;border:1px solid var(--border);cursor:pointer;transition:border-color 0.3s,transform 0.3s;display:block;background:var(--navy3)}
+.proj-img-main:hover{border-color:var(--border2);transform:scale(1.01)}
+.proj-img-thumbs{display:grid;gap:8px}
+.proj-img-thumbs.t3{grid-template-columns:repeat(3,1fr)}
+.proj-img-thumbs.t4{grid-template-columns:repeat(4,1fr)}
+.proj-img-thumb{width:100%;aspect-ratio:16/9;border-radius:3px;border:2px solid transparent;cursor:pointer;transition:border-color 0.25s,opacity 0.25s;opacity:0.55;object-fit:cover;background:var(--navy3)}
+.proj-img-thumb:hover,.proj-img-thumb.active{border-color:var(--gold);opacity:1}
+.proj-info{display:flex;flex-direction:column;gap:20px}
+.proj-number{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold-dim);letter-spacing:0.15em}
+.proj-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--white);line-height:1.2}
+
+/* BUSINESS PROBLEM BOX */
+.proj-problem{
+  background:rgba(201,149,42,0.04);
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:16px 20px;
+}
+.proj-problem-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+}
+.proj-problem p{font-size:13px;color:var(--muted);line-height:1.75}
+
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* FINDINGS AS BULLETS */
+.proj-findings{display:flex;flex-direction:column;gap:0}
+.proj-findings-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+}
+.proj-finding-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:10px 0;border-bottom:1px solid rgba(201,149,42,0.08);
+}
+.proj-finding-item:last-child{border-bottom:none}
+.proj-finding-num{
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);
+  flex-shrink:0;margin-top:2px;min-width:20px;
+}
+.proj-finding-text{font-size:12px;color:var(--cream2);line-height:1.65}
+.proj-finding-text strong{color:var(--gold-light);font-weight:500}
+
+.proj-built-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.proj-built-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.proj-built-list li{font-size:12px;color:var(--muted);padding-left:14px;position:relative;line-height:1.6}
+.proj-built-list li::before{content:'·';position:absolute;left:0;color:var(--gold)}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px}
+.proj-tech{font-size:11px;font-family:'DM Mono',monospace;padding:4px 10px;border:1px solid var(--border);border-radius:2px;color:var(--muted)}
+.proj-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.proj-link-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--border2);border-radius:2px;font-size:12px;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:background 0.25s,color 0.25s,transform 0.2s}
+.proj-link-btn:hover{background:rgba(201,149,42,0.1);transform:translateY(-2px)}
+.proj-link-btn.primary{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.proj-link-btn.primary:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.proj-link-btn svg{width:16px;height:16px;flex-shrink:0}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(8,14,28,0.96);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:4px;border:1px solid var(--border2)}
+.lightbox-close{position:absolute;top:24px;right:32px;font-size:28px;color:var(--muted);cursor:pointer;transition:color 0.2s;line-height:1;background:none;border:none}
+.lightbox-close:hover{color:var(--gold-light)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:36px;color:var(--muted);cursor:pointer;background:none;border:none;transition:color 0.2s;padding:12px}
+.lightbox-nav:hover{color:var(--gold-light)}
+.lightbox-nav.prev{left:20px}
+.lightbox-nav.next{right:20px}
+
+/* EDUCATION */
+#education{border-top:1px solid var(--border)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.edu-card{background:var(--navy3);border:1px solid var(--border);border-radius:3px;padding:32px;position:relative;overflow:hidden}
+.edu-card::after{content:'8.23';position:absolute;right:-10px;bottom:-20px;font-family:'Cormorant Garamond',serif;font-size:110px;font-weight:300;color:rgba(201,149,42,0.04);line-height:1;pointer-events:none}
+.edu-degree{font-size:18px;font-weight:400;color:var(--white);margin-bottom:6px}
+.edu-univ{font-size:13px;color:var(--muted);margin-bottom:18px}
+.edu-meta{display:flex;gap:12px;flex-wrap:wrap}
+.edu-badge{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 12px;border:1px solid var(--border);border-radius:2px;color:var(--gold);background:rgba(201,149,42,0.06)}
+.cert-item{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;background:var(--navy3);border:1px solid var(--border);border-radius:3px;transition:border-color 0.25s;margin-bottom:10px}
+.cert-item:hover{border-color:var(--gold-dim)}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px}
+.cert-name{font-size:13px;color:var(--cream);line-height:1.4}
+.cert-issuer{font-size:11px;color:var(--muted);margin-top:3px;font-family:'DM Mono',monospace}
+
+/* CONTACT */
+#contact{background:var(--navy2);border-top:1px solid var(--border);text-align:center}
+.contact-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,78px);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:14px}
+.contact-heading em{font-style:italic;color:var(--gold-light)}
+.contact-sub{font-size:14px;color:var(--muted);margin-bottom:44px;line-height:1.7}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:56px}
+.contact-link{display:flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid var(--border);border-radius:3px;color:var(--cream);text-decoration:none;font-size:13px;background:var(--navy3);transition:border-color 0.25s,color 0.25s,transform 0.25s}
+.contact-link:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-3px)}
+.contact-link svg{width:18px;height:18px;flex-shrink:0}
+
+footer{border-top:1px solid var(--border);padding:24px 60px;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);letter-spacing:0.08em;position:relative;z-index:1}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scrollAnim{0%{left:-100%}100%{left:100%}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-photo-wrap{display:none}}
+@media(max-width:768px){nav{padding:16px 20px}.nav-links{display:none}section{padding:72px 20px}#hero{padding:0 20px}.skills-grid,.proj-layout,.edu-grid{grid-template-columns:1fr}.exp-item{grid-template-columns:1fr}footer{flex-direction:column;gap:8px;text-align:center;padding:18px 20px}}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-nav prev" id="lbPrev">‹</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav next" id="lbNext">›</button>
+</div>
+
+<nav>
+  <a href="#hero" class="nav-logo">P.D.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Data Analyst · Delhi NCR, India</div>
+      <h1 class="hero-name">Pratiksha<br><em>Dandriyal</em></h1>
+      <p class="hero-tagline"><strong>Turning raw data into decisions</strong> — end-to-end analytics from data modeling and ETL pipelines to interactive Power BI dashboards. SQL Server · Power BI · Python · DAX.</p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+        <a href="Pratiksha_Dandriyal_Resume.pdf" download class="btn-outline">Resume ↓</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <img class="hero-photo" src="profile_picture.jpeg" alt="Pratiksha Dandriyal">
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll to explore</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label reveal">About me</div>
+    <h2 class="about-heading reveal">I build analytics that <em>actually get used</em></h2>
+    <div class="about-text reveal reveal-delay-1">
+      <p>I'm a BTech CSE graduate who found her calling at the intersection of data engineering and business storytelling. My approach is always the same: understand the business problem first, build clean data pipelines second, and let the visualisation speak last — because a beautiful dashboard built on dirty data is just a pretty lie. I've applied this end-to-end across real internship work — analysing 23,000+ records across multiple departments and building weekly operational reporting pipelines that directly influenced product decisions — and across three independent projects covering IT support SLA analytics, SaaS product metrics, and global workforce automation risk. I'm now looking for a full-time Data Analyst role where I can own the full pipeline, not just the last mile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">Technical skills</div>
+    <h2 class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:300;color:var(--white)">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Analytics & Visualization</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span><span class="skill-tag">DAX</span><span class="skill-tag">Power Query</span><span class="skill-tag">KPI Tracking</span><span class="skill-tag">Data Storytelling</span><span class="skill-tag">EDA</span><span class="skill-tag">Google Looker Studio</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-1">
+        <div class="skill-cat-title">Data & SQL</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL Server</span><span class="skill-tag">MySQL</span><span class="skill-tag">Data Modeling</span><span class="skill-tag">ETL / ELT Pipelines</span><span class="skill-tag">Data Cleaning</span><span class="skill-tag">Relational DB Design</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-2">
+        <div class="skill-cat-title">Programming</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">HTML / CSS / JS</span><span class="skill-tag">Jupyter Notebook</span>
+        </div>
+      </div>
+      <div class="skill-category reveal reveal-delay-3">
+        <div class="skill-cat-title">Tools & Productivity</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MS Excel</span><span class="skill-tag">Advanced Pivot Tables</span><span class="skill-tag">Git & GitHub</span><span class="skill-tag">VS Code</span><span class="skill-tag">Google Colab</span><span class="skill-tag">Google Sheets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">Work experience</div>
+    <h2 class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:300;color:var(--white)">Where I've worked</h2>
+    <div style="margin-top:8px">
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">Sep 2024 — Dec 2024</div>
+          <div class="exp-company">EasyGov (Surajya Services)</div>
+          <span class="exp-type">Internship</span>
+        </div>
+        <div>
+          <div class="exp-role">Data & Product Analytics Intern</div>
+          <ul class="exp-bullets">
+            <li>Built a weekly reporting pipeline using SQL, Python, and Excel to extract and clean operational data across 5+ departments — delivering structured insights that directly shaped resource allocation decisions.</li>
+            <li>Identified recurring system failure patterns and queue time bottlenecks through SQL trend analysis; findings were directly incorporated into scheduling workflow changes by the product team.</li>
+            <li>Translated product team requirements into structured weekly analysis reports using Pandas, NumPy, and Matplotlib covering throughput, failure rates, and usage trends.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-period">Jul 2024 — Aug 2024</div>
+          <div class="exp-company">MAX Healthcare · IT Division</div>
+          <span class="exp-type">Internship</span>
+        </div>
+        <div>
+          <div class="exp-role">Data Analyst Intern</div>
+          <ul class="exp-bullets">
+            <li>Analysed 6 interconnected Excel files with 23,000+ records linked across multiple departments using common keys to surface cross-departmental patterns in operational and financial data.</li>
+            <li>Delivered weekly stakeholder reports on follow-up likelihood, seasonal department load, and performance by specialisation — insights referenced directly in scheduling discussions across 3 departments.</li>
+            <li>Quantified revenue performance across 3 locations by analysing 31 billing parameters, providing finance stakeholders a consolidated view of gross amounts, discounts, and write-offs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label reveal">Projects</div>
+    <h2 class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:300;color:var(--white)">Things I've built</h2>
+    <div style="margin-top:40px">
+      <div class="proj-tabs">
+        <button class="proj-tab active" data-tab="helpdesk">01 — Helpdesk SLA Analytics</button>
+        <button class="proj-tab" data-tab="saas">02 — SaaS Product Analytics</button>
+        <button class="proj-tab" data-tab="ai">03 — AI Job Displacement</button>
+      </div>
+
+      <!-- ===== HELPDESK ===== -->
+      <div class="proj-panel active reveal" id="tab-helpdesk">
+        <div class="proj-layout">
+          <div class="proj-images">
+            <img class="proj-img-main" id="helpdesk-main" src="Executive_Overview.png" alt="Executive Overview" onclick="openLightbox(helpdeskImgs,0)">
+            <div class="proj-img-thumbs t3">
+              <img class="proj-img-thumb active" src="Executive_Overview.png" alt="Executive Overview" onclick="switchImg('helpdesk',0,this)">
+              <img class="proj-img-thumb" src="SLA___Resolution_Deep_Dive.png" alt="SLA Deep Dive" onclick="switchImg('helpdesk',1,this)">
+              <img class="proj-img-thumb" src="Agent___Department_Performance.png" alt="Agent Performance" onclick="switchImg('helpdesk',2,this)">
+            </div>
+            <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);letter-spacing:0.1em;text-align:center">Click image to enlarge · 3 dashboard pages</p>
+          </div>
+          <div class="proj-info">
+            <div class="proj-number">Project 01 · Featured · Most Recent</div>
+            <div class="proj-title">Helpdesk Performance & SLA Analytics</div>
+
+            <div class="proj-problem">
+              <div class="proj-problem-label">Business Problem</div>
+              <p>IT managers at large organisations have no visibility into why SLAs keep getting missed. They can't tell whether it's a staffing problem, a routing problem, or a category-specific issue — so every intervention is a guess. This dashboard was built to answer: <em>where exactly is SLA compliance breaking down, and what does leadership need to do about it?</em></p>
+            </div>
+
+            <div class="proj-findings">
+              <div class="proj-findings-label">Actionable Findings</div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">01</span>
+                <span class="proj-finding-text"><strong>Network tickets breach SLA at 37.5%</strong> — the highest of any category — despite having the fastest resolution time at 23hrs. The breach happens in the 1-hour first-response window. Fix: dedicate on-call coverage during peak Monday morning hours.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">02</span>
+                <span class="proj-finding-text"><strong>3 agents handle 35% of all tickets</strong> (973, 973, 928 vs team avg of 400). The scatter chart shows these same agents have the highest breach rates — confirming this is a workload distribution failure, not a skill gap.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">03</span>
+                <span class="proj-finding-text"><strong>SLA breach rate held flat at ~23% across 26 months</strong> with no improvement trend. This rules out random variation — it's a structural problem requiring a staffing or routing intervention, not monthly process tweaks.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">04</span>
+                <span class="proj-finding-text"><strong>Marketing generates 22.97 tickets per employee</strong> — the highest burden ratio of any department. Despite having only 35 staff, they place more per-capita demand on IT than Engineering (120 staff). Targeted self-service training could reduce volume.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">05</span>
+                <span class="proj-finding-text"><strong>Peak load is Monday 11am–1pm</strong> and Wednesday 1pm. Current shift schedules don't reflect this — redistributing agent availability to weight Monday mornings would reduce the backlog that drives SLA breaches.</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="proj-built-title">Technical highlights</div>
+              <ul class="proj-built-list">
+                <li>4-table normalised schema — FK, CHECK, UNIQUE constraints enforced at database level</li>
+                <li>DATEDIFF(MINUTE) ÷ 60.0 for decimal precision — integer DATEDIFF(HOUR) truncates and misclassifies tight 1–2hr SLA tickets as compliant</li>
+                <li>Dual-column JOIN on category + priority against sla_policy — per-ticket SLA threshold, not a blanket rule</li>
+                <li>3 SQL views as Power BI data layer — all logic lives in SQL, not scattered across DAX</li>
+                <li>RANK() OVER window function for agent workload rankings without collapsing rows</li>
+                <li>Day × Hour heatmap matrix with conditional formatting gradient (dark navy → red)</li>
+                <li>Agent Workload vs Breach Rate scatter — identifies overload vs skill issues simultaneously</li>
+                <li>12+ DAX measures with separate text and numeric versions for KPI card vs chart axis</li>
+              </ul>
+            </div>
+            <div class="proj-stack">
+              <span class="proj-tech">SQL Server</span><span class="proj-tech">Python</span><span class="proj-tech">Power BI</span><span class="proj-tech">DAX</span><span class="proj-tech">Data Modeling</span><span class="proj-tech">ETL Pipeline</span>
+            </div>
+            <div class="proj-actions">
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiMmZlNDc3M2MtNWYzNi00ZjZhLThiMzctYzgyNzIxMDlkNmIwIiwidCI6IjgxNzlhMDY3LTM5NGYtNDI2ZS05M2RhLTMzZmM4MjJmYTgxNSJ9" target="_blank" class="proj-link-btn primary">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h4v16H4V4z" fill="#F2C811"/><path d="M9.5 8h4v12h-4V8z" fill="#F2C811" opacity=".85"/><path d="M15 2h5v18h-5V2z" fill="#F2C811" opacity=".7"/></svg>
+                Live Dashboard
+              </a>
+              <a href="https://github.com/pratikshadandriyal/Helpdesk-Performance-SLA-Analytics" target="_blank" class="proj-link-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SAAS ===== -->
+      <div class="proj-panel" id="tab-saas">
+        <div class="proj-layout">
+          <div class="proj-images">
+            <img class="proj-img-main" id="saas-main" src="page1_executive_overview.png" alt="SaaS Executive Overview" onclick="openLightbox(saasImgs,0)">
+            <div class="proj-img-thumbs t4">
+              <img class="proj-img-thumb active" src="page1_executive_overview.png" alt="Executive Overview" onclick="switchImg('saas',0,this)">
+              <img class="proj-img-thumb" src="page2_user_behaviour.png" alt="User Behaviour" onclick="switchImg('saas',1,this)">
+              <img class="proj-img-thumb" src="page3_feature_adoption.png" alt="Feature Adoption" onclick="switchImg('saas',2,this)">
+              <img class="proj-img-thumb" src="page4_churn_retention.png" alt="Churn & Retention" onclick="switchImg('saas',3,this)">
+            </div>
+            <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);letter-spacing:0.1em;text-align:center">Click image to enlarge · 4 dashboard pages</p>
+          </div>
+          <div class="proj-info">
+            <div class="proj-number">Project 02</div>
+            <div class="proj-title">SaaS Product Analytics Dashboard</div>
+
+            <div class="proj-problem">
+              <div class="proj-problem-label">Business Problem</div>
+              <p>A B2B SaaS company is losing nearly as much revenue to churn as it brings in every month — but leadership doesn't know whether the problem is acquisition quality, product value, or onboarding failure. This dashboard was built to answer: <em>why are users churning, which users are worth saving, and where should the product team invest first?</em></p>
+            </div>
+
+            <div class="proj-findings">
+              <div class="proj-findings-label">Actionable Findings</div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">01</span>
+                <span class="proj-finding-text"><strong>Only 1 in 4 users is both paying and retained</strong> (1,273 of 5,000). The funnel shows 5,000 signups → 2,571 active → 2,458 paid → 1,273 paid and active. The business is spending acquisition budget while churn silently offsets every new signup.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">02</span>
+                <span class="proj-finding-text"><strong>$90,548 in MRR is lost to churn vs $92,818 retained</strong> — the business is running a leaky bucket where every $1 of acquisition is offset by $0.98 of churn loss. Fixing retention is worth more than scaling acquisition spend.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">03</span>
+                <span class="proj-finding-text"><strong>Users adopting 5 features convert at 55.3% vs 46.9% for single-feature users</strong> — an 8.4pp gap. Improving onboarding to drive early multi-feature adoption is the highest-ROI product decision available right now.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">04</span>
+                <span class="proj-finding-text"><strong>Free users engage longer than paid users</strong> (62.5 vs 60.4 mins avg session). This is a product value signal, not an engagement problem — paid users aren't extracting proportional value from their plan, which drives churn.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">05</span>
+                <span class="proj-finding-text"><strong>Google converts best (51.2%) but also churns fastest</strong>. Referral users pay $73 avg MRR vs Google's $69 and retain better — shifting acquisition investment toward a referral programme yields higher lifetime value users.</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="proj-built-title">Technical highlights</div>
+              <ul class="proj-built-list">
+                <li>Star schema: users (dim) → sessions, feature_usage, subscriptions (3 fact tables)</li>
+                <li>Sequential TRY_CONVERT with 3 style codes (23, 101, 105) — ISO, US, and European date formats in the same column</li>
+                <li>Session deduplication: 20,000 → 6,566 rows using MIN(session_id) per user + date + device</li>
+                <li>25+ DAX measures covering MRR, churn, feature adoption depth, and cohort retention</li>
+                <li>Numeric + display measure pairs — Power BI chart axes reject text; KPI cards need formatted strings</li>
+                <li>Cohort retention analysis by signup month — April 2024 cohort retains best at 56.2%</li>
+              </ul>
+            </div>
+            <div class="proj-stack">
+              <span class="proj-tech">SQL Server</span><span class="proj-tech">Python</span><span class="proj-tech">Power BI</span><span class="proj-tech">DAX</span><span class="proj-tech">Star Schema</span><span class="proj-tech">Cohort Analysis</span>
+            </div>
+            <div class="proj-actions">
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiZDI3NDdkYmEtYzVlMi00OWY3LWE4OGItZDc2MTdiYzM0ZTg4IiwidCI6IjgxNzlhMDY3LTM5NGYtNDI2ZS05M2RhLTMzZmM4MjJmYTgxNSJ9&pageName=8486aca82e4a8c85e571" target="_blank" class="proj-link-btn primary">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h4v16H4V4z" fill="#F2C811"/><path d="M9.5 8h4v12h-4V8z" fill="#F2C811" opacity=".85"/><path d="M15 2h5v18h-5V2z" fill="#F2C811" opacity=".7"/></svg>
+                Live Dashboard
+              </a>
+              <a href="https://github.com/pratikshadandriyal/SaaS-Product-Analytics-Dashboard" target="_blank" class="proj-link-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== AI ===== -->
+      <div class="proj-panel" id="tab-ai">
+        <div class="proj-layout">
+          <div class="proj-images">
+            <img class="proj-img-main" id="ai-main" src="overview.png" alt="AI Job Displacement Overview" onclick="openLightbox(aiImgs,0)">
+            <div class="proj-img-thumbs t4">
+              <img class="proj-img-thumb active" src="overview.png" alt="Overview" onclick="switchImg('ai',0,this)">
+              <img class="proj-img-thumb" src="AI_risk_analysis.png" alt="Risk Analysis" onclick="switchImg('ai',1,this)">
+              <img class="proj-img-thumb" src="salary_analysis.png" alt="Salary Analysis" onclick="switchImg('ai',2,this)">
+              <img class="proj-img-thumb" src="skills_and_reskilling.png" alt="Skills & Reskilling" onclick="switchImg('ai',3,this)">
+            </div>
+            <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);letter-spacing:0.1em;text-align:center">Click image to enlarge · 4 dashboard pages</p>
+          </div>
+          <div class="proj-info">
+            <div class="proj-number">Project 03</div>
+            <div class="proj-title">AI Job Displacement & Reskilling Dashboard</div>
+
+            <div class="proj-problem">
+              <div class="proj-problem-label">Business Problem</div>
+              <p>Organisations and policymakers know AI disruption is happening — but they can't quantify where, how fast, or who is most at risk. Without structured data, reskilling budgets get allocated based on assumption rather than evidence. This dashboard was built to answer: <em>which roles and industries need reskilling intervention first, and does reskilling actually translate to better salary outcomes?</em></p>
+            </div>
+
+            <div class="proj-findings">
+              <div class="proj-findings-label">Actionable Findings</div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">01</span>
+                <span class="proj-finding-text"><strong>Energy leads AI disruption intensity at 23.62</strong> — the highest across all 8 industries — while also having a high automation risk of 46.9%. This double exposure makes Energy the highest-priority sector for workforce intervention.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">02</span>
+                <span class="proj-finding-text"><strong>Technology has the lowest AI replacement score at 45.39</strong> — AI augments rather than replaces in this sector. Reskilling investment here yields workers who collaborate with AI tools, not workers who compete with them.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">03</span>
+                <span class="proj-finding-text"><strong>Reskilling increases average salary by $3,567 globally</strong> — but 41.13% of workers actually earned less after displacement. The average masks a deeply unequal outcome. Transportation gains most (+0.43%), Education loses most (−0.21%).</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">04</span>
+                <span class="proj-finding-text"><strong>Skill Gap Index is flat at 50 across all 8 industries</strong> — no sector is meaningfully better prepared than any other. This means the reskilling problem is systemic, not sector-specific, and requires broad policy action rather than targeted industry programmes.</span>
+              </div>
+              <div class="proj-finding-item">
+                <span class="proj-finding-num">05</span>
+                <span class="proj-finding-text"><strong>30% of jobs fall in the High risk category</strong>; the largest group (42%) is Medium risk — widespread near-threshold exposure. Teacher and Customer Support roles have the highest skill gap index and reskilling urgency simultaneously — priority candidates for programme investment.</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="proj-built-title">Technical highlights</div>
+              <ul class="proj-built-list">
+                <li>6 categories of data quality issues resolved: NULLs, duplicates, inconsistent casing, salary outliers, invalid category variants, year string corruption</li>
+                <li>ROW_NUMBER() window function for deduplication — PARTITION BY job_id keeps first occurrence</li>
+                <li>CASE statement normalising 6 corrupt risk category variants to High / Medium / Low</li>
+                <li>salary_trend derived column from salary_change_percent thresholds — Positive (>2%), Negative (<−2%), Stable</li>
+                <li>12+ DAX measures across automation risk, salary delta, reskilling urgency, and skill gap index</li>
+                <li>Skill Gap vs Reskilling Urgency scatter chart — two-dimensional view for prioritising intervention</li>
+              </ul>
+            </div>
+            <div class="proj-stack">
+              <span class="proj-tech">SQL Server</span><span class="proj-tech">Python</span><span class="proj-tech">Power BI</span><span class="proj-tech">DAX</span><span class="proj-tech">Power Query</span><span class="proj-tech">Data Quality Engineering</span>
+            </div>
+            <div class="proj-actions">
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiZTg4ZjcwMjctODJlOS00Y2QzLWIxZWQtNWU5OWI1YWFlODY0IiwidCI6IjgxNzlhMDY3LTM5NGYtNDI2ZS05M2RhLTMzZmM4MjJmYTgxNSJ9&pageName=f39879b19818099e3780" target="_blank" class="proj-link-btn primary">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h4v16H4V4z" fill="#F2C811"/><path d="M9.5 8h4v12h-4V8z" fill="#F2C811" opacity=".85"/><path d="M15 2h5v18h-5V2z" fill="#F2C811" opacity=".7"/></svg>
+                Live Dashboard
+              </a>
+              <a href="https://github.com/pratikshadandriyal/AI-Job-Replacement-Dashboard" target="_blank" class="proj-link-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label reveal">Education & certifications</div>
+    <div class="edu-grid">
+      <div class="reveal">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:300;color:var(--white);margin-bottom:20px">Formally trained, <em style="font-style:italic;color:var(--gold-light)">self-driven</em></h2>
+        <p style="font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:28px">Computer Science gave me the engineering foundation. Everything analytics came from building real projects, solving real problems, and obsessing over the gap between data and decision.</p>
+        <div class="edu-card">
+          <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+          <div class="edu-univ">Dr. APJ Abdul Kalam Technical University, India</div>
+          <div class="edu-meta">
+            <span class="edu-badge">CGPA 8.23 / 10.0</span>
+            <span class="edu-badge">Graduated Sep 2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Certifications</div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Microsoft Power BI Desktop for Business Intelligence</div><div class="cert-issuer">Udemy · 2026</div></div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Python for Data Analysis & Business Intelligence</div><div class="cert-issuer">Udemy · 2026</div></div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">SQL for Data Analysis: Advanced SQL Querying Techniques</div><div class="cert-issuer">Udemy · 2025</div></div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Introduction to AI</div><div class="cert-issuer">IBM SkillsBuild · 2024</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center">Let's connect</div>
+    <h2 class="contact-heading reveal">Open to <em>opportunities</em></h2>
+    <p class="contact-sub reveal">Actively looking for Data Analyst roles in India — open to IT services, product, and analytics teams.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:pratikshadandriyal@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" fill="#fff" fill-opacity=".06" stroke="rgba(201,149,42,0.4)" stroke-width="1"/><path d="M2 6l10 7L22 6" stroke="#E8B84B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        pratikshadandriyal@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/pratikshadandriyal" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        linkedin.com/in/pratikshadandriyal
+      </a>
+      <a href="https://github.com/pratikshadandriyal" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        github.com/pratikshadandriyal
+      </a>
+      <a href="tel:+919013458960" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +91 90134 58960
+      </a>
+    </div>
+    <a href="Pratiksha_Dandriyal_Resume.pdf" download class="btn-primary reveal" style="display:inline-block">Download Resume ↓</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Pratiksha Dandriyal</span>
+  <span>Data Analyst · Delhi NCR, India</span>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=(mx-4)+'px';cursor.style.top=(my-4)+'px'});
+(function animRing(){rx+=(mx-rx-16)*0.12;ry+=(my-ry-16)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button,.proj-img-main,.proj-img-thumb,.cert-item,.hero-photo').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+});
+
+const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('.proj-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.proj-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.proj-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel=document.getElementById('tab-'+tab.dataset.tab);
+    if(panel){panel.classList.add('active');panel.classList.add('visible')}
+  });
+});
+
+const helpdeskImgs=['Executive_Overview.png','SLA___Resolution_Deep_Dive.png','Agent___Department_Performance.png'];
+const saasImgs=['page1_executive_overview.png','page2_user_behaviour.png','page3_feature_adoption.png','page4_churn_retention.png'];
+const aiImgs=['overview.png','AI_risk_analysis.png','salary_analysis.png','skills_and_reskilling.png'];
+
+function switchImg(proj,idx,thumbEl){
+  const map={helpdesk:helpdeskImgs,saas:saasImgs,ai:aiImgs};
+  const imgs=map[proj];if(!imgs||!imgs[idx])return;
+  document.getElementById(proj+'-main').src=imgs[idx];
+  document.getElementById('tab-'+proj).querySelectorAll('.proj-img-thumb').forEach(t=>t.classList.remove('active'));
+  thumbEl.classList.add('active');
+}
+
+let lbImgs=[],lbIdx=0;
+function openLightbox(imgs,idx){lbImgs=imgs;lbIdx=idx;document.getElementById('lightboxImg').src=imgs[idx];document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
+document.getElementById('lbClose').onclick=()=>{document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''};
+document.getElementById('lbPrev').onclick=()=>{lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length;document.getElementById('lightboxImg').src=lbImgs[lbIdx]};
+document.getElementById('lbNext').onclick=()=>{lbIdx=(lbIdx+1)%lbImgs.length;document.getElementById('lightboxImg').src=lbImgs[lbIdx]};
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget){e.currentTarget.classList.remove('open');document.body.style.overflow=''}});
+document.addEventListener('keydown',e=>{
+  const lb=document.getElementById('lightbox');
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape'){lb.classList.remove('open');document.body.style.overflow=''}
+  if(e.key==='ArrowLeft'){lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length;document.getElementById('lightboxImg').src=lbImgs[lbIdx]}
+  if(e.key==='ArrowRight'){lbIdx=(lbIdx+1)%lbImgs.length;document.getElementById('lightboxImg').src=lbImgs[lbIdx]}
+});
+</script>
+</body>
+</html>
