@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Readmission & Patient Flow Analytics — Pratiksha Dandriyal</title>
+<meta name="description" content="Hospital readmission and patient flow analytics on a synthetic, ICMR-calibrated Indian dataset — 9,093 encounters analysed across SQL Server, Python, and Power BI.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230F6E56'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23FAFAF7'>P</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAFAF7;--bg-alt:#F1F0E9;--card:#FFFFFF;--border:#E4E2D8;--border-strong:#D3D1C4;--text:#1B1E1C;--text-2:#5B5F5A;--text-3:#8B8F87;--accent:#0F6E56;--accent-lt:#E1F5EE;--accent-dk:#085041;--radius:6px;--shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 12px rgba(0,0,0,0.04)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.site-nav{position:sticky;top:0;z-index:200;background:rgba(250,250,247,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:'Lora',serif;font-size:18px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.nav-logo span{color:var(--accent);font-style:italic}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-2);transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;inset:60px 0 0 0;background:var(--bg);border-top:1px solid var(--border);padding:32px;z-index:199;flex-direction:column}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:18px;font-weight:500;color:var(--text);padding:14px 0;border-bottom:1px solid var(--border);transition:color 0.2s}
+.nav-drawer a:hover{color:var(--accent)}
+.container{max-width:1120px;margin:0 auto;padding:0 32px}
+.back-bar{padding:20px 0;border-bottom:1px solid var(--border)}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--text-2);transition:color 0.2s}
+.back-link:hover{color:var(--accent)}
+.back-link svg{width:16px;height:16px}
+.proj-hero{padding:60px 0 48px;border-bottom:1px solid var(--border)}
+.proj-hero-inner{display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:start}
+.proj-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.proj-title{font-family:'Lora',serif;font-size:clamp(28px,4vw,46px);font-weight:600;color:var(--text);line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px}
+.proj-title em{font-style:italic;color:var(--accent)}
+.proj-tagline{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:28px}
+.proj-action-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:10px 20px;border-radius:var(--radius);transition:all 0.2s;cursor:pointer;border:none;text-decoration:none}
+.btn-primary{background:var(--text);color:var(--bg);border:1px solid var(--text)}
+.btn-primary:hover{background:#2d3330}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border-strong)}
+.btn-outline:hover{border-color:var(--text);background:rgba(27,30,28,0.04)}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.proj-illustration{background:var(--accent);border-radius:12px;padding:36px;display:flex;align-items:center;justify-content:center;min-height:200px}
+.proj-illustration svg{width:100px;height:100px;stroke:#fff;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:0.9}
+.stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.stat-chip{font-size:13px;font-weight:500;padding:7px 16px;border-radius:20px;background:var(--accent-lt);color:var(--accent-dk)}
+.proj-content{padding:64px 0}
+.proj-body-grid{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start}
+.main-col{display:flex;flex-direction:column;gap:48px}
+.side-col{display:flex;flex-direction:column;gap:24px;position:sticky;top:80px}
+.content-block{}
+.block-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.block-heading{font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:16px;line-height:1.25}
+.findings-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.finding-item{display:flex;gap:16px;padding:18px 20px;border-bottom:1px solid var(--border);background:var(--card);transition:background 0.2s}
+.finding-item:last-child{border-bottom:none}
+.finding-item:hover{background:var(--accent-lt)}
+.finding-num{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);flex-shrink:0;margin-top:1px;min-width:22px}
+.finding-text{font-size:13.5px;color:var(--text-2);line-height:1.7}
+.finding-text strong{color:var(--text);font-weight:500}
+.tech-list{display:flex;flex-direction:column;gap:0}
+.tech-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2);line-height:1.6}
+.tech-item:last-child{border-bottom:none}
+.tech-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px}
+.gallery{display:flex;flex-direction:column;gap:12px}
+.gallery-main{width:100%;border-radius:var(--radius);border:1px solid var(--border);cursor:pointer;transition:border-color 0.2s,transform 0.2s}
+.gallery-main:hover{border-color:var(--accent);transform:scale(1.01)}
+.gallery-thumbs{display:grid;gap:8px}
+.gallery-thumbs.t2{grid-template-columns:repeat(2,1fr)}
+.gallery-thumbs.t4{grid-template-columns:repeat(4,1fr)}
+.gallery-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;border:2px solid transparent;cursor:pointer;transition:border-color 0.2s,opacity 0.2s;opacity:0.55}
+.gallery-thumb.active,.gallery-thumb:hover{border-color:var(--accent);opacity:1}
+.gallery-hint{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:0.1em;text-align:center}
+.lightbox{position:fixed;inset:0;background:rgba(27,30,28,0.92);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:var(--radius)}
+.lb-close{position:absolute;top:20px;right:28px;font-size:26px;color:rgba(250,250,247,0.7);cursor:pointer;background:none;border:none;transition:color 0.2s;line-height:1}
+.lb-close:hover{color:#fff}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:32px;color:rgba(250,250,247,0.6);cursor:pointer;background:none;border:none;padding:12px;transition:color 0.2s}
+.lb-nav:hover{color:#fff}
+.lb-prev{left:16px}
+.lb-next{right:16px}
+.side-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.side-card-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+.stack-chips{display:flex;flex-wrap:wrap;gap:6px}
+.stack-chip{font-family:'DM Mono',monospace;font-size:11px;padding:4px 12px;border-radius:20px;background:var(--accent-lt);color:var(--accent-dk)}
+.link-list{display:flex;flex-direction:column;gap:8px}
+.link-btn{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;padding:10px 14px;border-radius:var(--radius);border:1px solid var(--border-strong);transition:all 0.2s}
+.link-btn:hover{border-color:var(--accent);background:var(--accent-lt)}
+.link-btn svg{width:18px;height:18px;flex-shrink:0}
+.primary-link{background:var(--text);color:var(--bg);border-color:var(--text)}
+.primary-link:hover{background:#2d3330;border-color:#2d3330}
+.note-box{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;font-size:13px;color:var(--text-2);line-height:1.7}
+.note-box strong{color:var(--text)}
+.site-footer{border-top:1px solid var(--border);padding:32px 0;margin-top:0}
+.footer-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-3);flex-wrap:wrap;gap:8px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.proj-hero-inner,.proj-body-grid{grid-template-columns:1fr}.side-col{position:static}.proj-illustration{min-height:160px;padding:28px}}
+@media(max-width:640px){.nav-links{display:none}.nav-toggle{display:flex}.gallery-thumbs.t4{grid-template-columns:repeat(2,1fr)}.gallery-thumbs.t2{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Pratiksha<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-drawer" id="navDrawer">
+    <a href="index.html#about">About</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</nav>
+
+<div class="back-bar">
+  <div class="container">
+    <a href="index.html#projects" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Projects
+    </a>
+  </div>
+</div>
+
+<section class="proj-hero">
+  <div class="container">
+    <div class="proj-hero-inner">
+      <div>
+        <p class="proj-eyebrow">Project 03 · Healthcare Operations Analytics</p>
+        <h1 class="proj-title">Hospital Readmission &<br><em>Patient Flow Analytics</em></h1>
+        <p class="proj-tagline">Hospitals lose money and quality-of-care ratings when patients are readmitted within 30 days of discharge — but without a structured analytics layer, administrators can't tell which risk factors are real drivers versus which just look correlated on the surface. This dashboard was built on a synthetic, ICMR-calibrated Indian dataset to answer: <em>which diagnosis categories, age groups, and discharge processes actually drive readmission — and where can a hospital realistically intervene?</em></p>
+        <div class="proj-action-btns">
+          <a href="https://github.com/pratikshadandriyal/hospital-readmission-patient-flow-analytics" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub Repository
+          </a>
+        </div>
+        <div class="stat-row">
+          <span class="stat-chip">9,093 encounters · 7,500 patients</span>
+          <span class="stat-chip">6 diagnosis categories</span>
+          <span class="stat-chip">17.5% overall readmission rate</span>
+          <span class="stat-chip">2-page Power BI dashboard</span>
+        </div>
+      </div>
+      <div class="proj-illustration">
+        <!-- Hospital building + pulse line icon -->
+        <svg viewBox="0 0 100 100">
+          <rect x="22" y="34" width="56" height="52" rx="2" stroke-width="2.2"/>
+          <path d="M22 34 L50 12 L78 34" stroke-width="2.2"/>
+          <line x1="50" y1="46" x2="50" y2="62" stroke-width="2.2"/>
+          <line x1="42" y1="54" x2="58" y2="54" stroke-width="2.2"/>
+          <polyline points="14,76 30,76 36,64 44,88 52,70 58,76 86,76" stroke-width="2" opacity="0.85"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proj-content">
+  <div class="container">
+    <div class="proj-body-grid">
+      <div class="main-col">
+
+        <div class="content-block reveal">
+          <p class="block-label">Actionable findings</p>
+          <h2 class="block-heading">What the data revealed</h2>
+          <div class="findings-list">
+            <div class="finding-item">
+              <span class="finding-num">01</span>
+              <span class="finding-text"><strong>Age is the cleanest single driver in the entire analysis</strong> — readmission climbs monotonically from 4.4% (Under 18) to 32.5% (75+), a near-linear progression with zero reversals. Discharge planning resources should scale directly with age past 60, not just flag a single elderly threshold.</span>
+            </div>
+            <div class="finding-item">
+              <span class="finding-num">02</span>
+              <span class="finding-text"><strong>CKD and Cardiovascular patients readmit at ~5x the rate of Maternal/Neonatal</strong> (25.2% and 24.3% vs 5.1%), and length of stay compounds this — readmission triples and average cost quadruples (₹33.7K → ₹1.32L) from the shortest to longest stay bracket. A dedicated post-discharge protocol for these two categories with extended stays targets the highest-cost, highest-risk overlap directly.</span>
+            </div>
+            <div class="finding-item">
+              <span class="finding-num">03</span>
+              <span class="finding-text"><strong>Self-pay patients are the real equity story — not PMJAY.</strong> Self-pay bears 100% out-of-pocket cost and shows the highest readmission rate (19.2%). PMJAY's expected access-friction effect turned out real in direction but too modest to separate from Private Insurance (16.90% vs 16.95%) — an honest finding, not the dramatic PMJAY story initially expected.</span>
+            </div>
+            <div class="finding-item">
+              <span class="finding-num">04</span>
+              <span class="finding-text"><strong>LAMA discharge is the one directly fixable process failure</strong> (22.5% vs 17.6% Routine, a +4.9pp uplift). Unlike age or diagnosis category, this is a process outcome a hospital can actually intervene on — a structured 48-hour follow-up call for LAMA patients is a concrete, low-cost intervention with a defensible expected return.</span>
+            </div>
+            <div class="finding-item">
+              <span class="finding-num">05</span>
+              <span class="finding-text"><strong>17.5% of patients (2+ encounters/year) drive 37.4% of total inpatient cost</strong> — more than double their proportional share. A care-management programme targeting this specific frequent-flyer segment would have outsized cost-reduction leverage relative to a hospital-wide initiative.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block reveal">
+          <p class="block-label">Dashboard preview</p>
+          <h2 class="block-heading">2-page Power BI dashboard</h2>
+          <div class="gallery">
+            <img class="gallery-main" id="mainImg" src="hospital_executive_overview.png" alt="Hospital Readmission Executive Overview" onclick="openLb(imgs,0)">
+            <div class="gallery-thumbs t2">
+              <img class="gallery-thumb active" src="hospital_executive_overview.png" alt="Executive Overview" onclick="switchImg(0,this)">
+              <img class="gallery-thumb" src="hospital_risk_drivers.png" alt="Risk Drivers / High-Risk Segments" onclick="switchImg(1,this)">
+            </div>
+            <p class="gallery-hint">Click main image to enlarge · 2 pages</p>
+          </div>
+        </div>
+
+        <div class="content-block reveal">
+          <p class="block-label">Technical highlights</p>
+          <h2 class="block-heading">How it was built</h2>
+          <div class="tech-list">
+            <div class="tech-item">Synthetic dataset generated in Python and calibrated against real published Indian benchmarks (ICMR disease-burden ordering, a PMJAY-era OOPE cost study) — readmission driven by an actual logistic risk model, not a random flag</div>
+            <div class="tech-item">Prior-admission counts computed via a SQL self-join, independently cross-validated in Python using a structurally different time-window technique — exact match across all 9,093 encounters (7,500 / 1,311 / 282 by prior-admission count)</div>
+            <div class="tech-item">Composite 5-factor risk-tier score (age, comorbidity, prior admissions, insurance type, LAMA) built via chained CTEs in SQL, then re-derived directly as a DAX calculated column reusing the already-validated Python features</div>
+            <div class="tech-item">Python confounding check: a 0.727 correlation between medication complexity and comorbidity count proved the two are confounded, not independent — turning a SQL-stage suspicion into a defensible, numeric fact</div>
+            <div class="tech-item">Fiscal-year sort/label column pairs (April = 1 … March = 12) across all bucketed charts, so trend and bucket visuals read in true chronological and logical order instead of alphabetical</div>
+            <div class="tech-item">6 real bugs caught and documented across all three layers — from a risk-model centring error that overshot every readmission target, to a KPI card silently bound to the wrong measure (showing 17.9% instead of the correct 26.6%)</div>
+          </div>
+        </div>
+
+        <div class="content-block reveal">
+          <div class="note-box"><strong>A note on the March dip:</strong> the monthly trend chart shows readmission dropping to ~5.8% in March against a steady 17–21% every other month. This was verified against the raw data, not assumed — it's a genuine artifact of the dataset's hard one-year cutoff (patients discharged very late in March simply run out of calendar days to be captured as a readmission within the observation window), documented directly on the chart so it can't be misread as a real quality improvement.</div>
+        </div>
+
+      </div>
+
+      <div class="side-col">
+        <div class="side-card">
+          <p class="side-card-title">Tech stack</p>
+          <div class="stack-chips">
+            <span class="stack-chip">SQL Server</span>
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Pandas</span>
+            <span class="stack-chip">Power BI</span>
+            <span class="stack-chip">DAX</span>
+            <span class="stack-chip">Self-Joins & CTEs</span>
+            <span class="stack-chip">Cross-Validation</span>
+          </div>
+        </div>
+        <div class="side-card">
+          <p class="side-card-title">Links</p>
+          <div class="link-list">
+            <a href="https://github.com/pratikshadandriyal/hospital-readmission-patient-flow-analytics" target="_blank" rel="noopener" class="link-btn primary-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub Repository
+            </a>
+          </div>
+        </div>
+        <div class="side-card">
+          <p class="side-card-title">Other projects</p>
+          <div class="link-list">
+            <a href="project-helpdesk.html" class="link-btn">Helpdesk SLA Analytics →</a>
+            <a href="project-saas.html" class="link-btn">SaaS Product Analytics →</a>
+            <a href="project-ai-displacement.html" class="link-btn">AI Job Displacement →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 Pratiksha Dandriyal</span>
+    <span>Data Analyst · Delhi NCR, India</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lb">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev">&#8249;</button>
+  <img id="lbImg" src="" alt="Dashboard enlarged view">
+  <button class="lb-nav lb-next" id="lbNext">&#8250;</button>
+</div>
+
+<script>
+const toggle=document.getElementById('navToggle'),drawer=document.getElementById('navDrawer');
+toggle.addEventListener('click',()=>{const o=drawer.classList.toggle('open');toggle.classList.toggle('open',o);toggle.setAttribute('aria-expanded',o)});
+document.querySelectorAll('.nav-drawer a').forEach(l=>l.addEventListener('click',()=>{drawer.classList.remove('open');toggle.classList.remove('open');toggle.setAttribute('aria-expanded',false)}));
+const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const imgs=['hospital_executive_overview.png','hospital_risk_drivers.png'];
+let cur=0;
+function switchImg(idx,thumb){cur=idx;document.getElementById('mainImg').src=imgs[idx];document.querySelectorAll('.gallery-thumb').forEach(t=>t.classList.remove('active'));thumb.classList.add('active')}
+function openLb(arr,idx){cur=idx;document.getElementById('lbImg').src=arr[idx];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
+document.getElementById('lbClose').onclick=()=>{document.getElementById('lb').classList.remove('open');document.body.style.overflow=''};
+document.getElementById('lbPrev').onclick=()=>{cur=(cur-1+imgs.length)%imgs.length;document.getElementById('lbImg').src=imgs[cur]};
+document.getElementById('lbNext').onclick=()=>{cur=(cur+1)%imgs.length;document.getElementById('lbImg').src=imgs[cur]};
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget){e.currentTarget.classList.remove('open');document.body.style.overflow=''}});
+document.addEventListener('keydown',e=>{const lb=document.getElementById('lb');if(!lb.classList.contains('open'))return;if(e.key==='Escape'){lb.classList.remove('open');document.body.style.overflow=''}if(e.key==='ArrowLeft'){cur=(cur-1+imgs.length)%imgs.length;document.getElementById('lbImg').src=imgs[cur]}if(e.key==='ArrowRight'){cur=(cur+1)%imgs.length;document.getElementById('lbImg').src=imgs[cur]}});
+</script>
+</body>
+</html>
