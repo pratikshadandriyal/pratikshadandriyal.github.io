@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratiksha Dandriyal — Data Analyst</title>
+<meta name="description" content="Pratiksha Dandriyal — Data Analyst specialising in SQL Server, Power BI, Python and DAX. Portfolio of end-to-end analytics projects.">
+<meta name="author" content="Pratiksha Dandriyal">
+<meta property="og:title" content="Pratiksha Dandriyal — Data Analyst">
+<meta property="og:description" content="End-to-end analytics from data modeling and ETL pipelines to interactive Power BI dashboards.">
+<meta property="og:image" content="profile_picture.jpeg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pratikshadandriyal.github.io">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230F6E56'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23FAFAF7'>P</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF7;--bg-alt:#F1F0E9;--card:#FFFFFF;
+  --border:#E4E2D8;--border-strong:#D3D1C4;
+  --text:#1B1E1C;--text-2:#5B5F5A;--text-3:#8B8F87;
+  --accent:#0F6E56;--accent-lt:#E1F5EE;--accent-dk:#085041;
+  --radius:6px;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 12px rgba(0,0,0,0.04);
+  --shadow-h:0 4px 16px rgba(0,0,0,0.10),0 1px 4px rgba(0,0,0,0.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:rgba(250,250,247,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:'Lora',serif;font-size:18px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.nav-logo span{color:var(--accent);font-style:italic}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-2);transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;inset:60px 0 0 0;background:var(--bg);border-top:1px solid var(--border);padding:32px;z-index:199;flex-direction:column;gap:0}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:18px;font-weight:500;color:var(--text);padding:14px 0;border-bottom:1px solid var(--border);transition:color 0.2s}
+.nav-drawer a:hover{color:var(--accent)}
+
+/* LAYOUT */
+.container{max-width:1120px;margin:0 auto;padding:0 32px}
+section{padding:80px 0}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.section-label::before{content:'';width:24px;height:1px;background:var(--accent)}
+.section-heading{font-family:'Lora',serif;font-size:clamp(28px,4vw,42px);font-weight:600;color:var(--text);line-height:1.15;letter-spacing:-0.02em;margin-bottom:48px}
+.section-intro{font-size:15px;color:var(--text-2);line-height:1.7;max-width:640px;margin-top:-28px;margin-bottom:32px}
+.section-heading em{font-style:italic;color:var(--accent)}
+
+/* HERO */
+#hero{padding:80px 0 72px;border-bottom:1px solid var(--border)}
+.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.hero-name{font-family:'Lora',serif;font-size:clamp(40px,6vw,68px);font-weight:600;line-height:1.0;letter-spacing:-0.03em;color:var(--text);margin-bottom:6px}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-role{font-family:'Lora',serif;font-size:clamp(16px,2vw,20px);font-weight:400;color:var(--text-2);margin-bottom:22px;font-style:italic}
+.hero-bio{font-size:15px;color:var(--text-2);line-height:1.8;max-width:540px;margin-bottom:32px}
+.hero-bio strong{color:var(--text);font-weight:500}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:10px 20px;border-radius:var(--radius);transition:all 0.2s;cursor:pointer;border:none;text-decoration:none}
+.btn-primary{background:var(--text);color:var(--bg);border:1px solid var(--text)}
+.btn-primary:hover{background:#2d3330}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border-strong)}
+.btn-outline:hover{border-color:var(--text);background:rgba(27,30,28,0.04)}
+.hero-photo-wrap{display:flex;justify-content:center}
+.hero-photo-ring{width:260px;height:260px;border-radius:50%;background:var(--accent-lt);border:2px solid var(--border);overflow:hidden}
+.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* ABOUT */
+#about{background:var(--bg-alt);border-bottom:1px solid var(--border)}
+.about-text{font-size:15px;color:var(--text-2);line-height:1.85;max-width:720px}
+
+/* SKILLS */
+#skills{border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.skill-card-centered{grid-column:1/-1;max-width:calc(50% - 10px);margin:0 auto}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color 0.2s,box-shadow 0.2s}
+.skill-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow)}
+.skill-card-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.skill-icon{width:36px;height:36px;flex-shrink:0;background:var(--accent-lt);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.skill-icon svg{width:18px;height:18px;stroke:var(--accent-dk);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.skill-cat{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-2)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-chip{font-size:12px;padding:4px 12px;border-radius:20px;background:var(--accent-lt);color:var(--accent-dk)}
+
+/* EXPERIENCE */
+#experience{background:var(--bg-alt);border-bottom:1px solid var(--border)}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:40px;padding:36px 0;border-top:1px solid var(--border)}
+.exp-item:last-child{border-bottom:1px solid var(--border)}
+.exp-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.06em;margin-bottom:4px}
+.exp-company{font-size:13px;color:var(--text-2);margin-bottom:8px}
+.exp-badge{display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--accent-lt);color:var(--accent-dk);font-family:'DM Mono',monospace}
+.exp-role{font-size:17px;font-weight:500;color:var(--text);margin-bottom:14px;font-family:'Lora',serif}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:10px}
+.exp-bullets li{font-size:13.5px;color:var(--text-2);line-height:1.75;padding-left:16px;position:relative}
+.exp-bullets li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* PROJECTS */
+#projects{border-bottom:1px solid var(--border)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj-card:nth-child(4){grid-column:2}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color 0.2s,box-shadow 0.25s,transform 0.25s;display:flex;flex-direction:column}
+.proj-card:hover{border-color:var(--accent);box-shadow:var(--shadow-h);transform:translateY(-4px)}
+.proj-thumb{height:160px;position:relative;overflow:hidden;background:#0F6E56;display:flex;align-items:center;justify-content:center}
+.proj-thumb svg.bg-svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.2}
+.proj-thumb-content{position:relative;z-index:1;text-align:center;padding:16px 20px}
+.proj-thumb-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:8px}
+.proj-thumb-title{font-family:'Lora',serif;font-size:16px;font-weight:600;color:#fff;line-height:1.3}
+.proj-body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.proj-chips{display:flex;flex-wrap:wrap;gap:6px}
+.proj-stat-chip{font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;background:var(--accent-lt);color:var(--accent-dk)}
+.proj-desc-short{font-size:13px;color:var(--text-2);line-height:1.65}
+.proj-footer{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border)}
+.proj-stack-mini{display:flex;gap:0;flex-wrap:wrap}
+.proj-stack-chip{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3)}
+.proj-stack-chip+.proj-stack-chip::before{content:' · '}
+.proj-cta{font-size:13px;font-weight:500;color:var(--accent);display:flex;align-items:center;gap:4px;transition:gap 0.2s;white-space:nowrap}
+.proj-card:hover .proj-cta{gap:8px}
+
+/* EDUCATION */
+#education{background:var(--bg-alt);border-bottom:1px solid var(--border)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.edu-degree{font-family:'Lora',serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:4px}
+.edu-univ{font-size:13px;color:var(--text-2);margin-bottom:16px}
+.edu-chips{display:flex;gap:8px;flex-wrap:wrap}
+.edu-chip{font-family:'DM Mono',monospace;font-size:11px;padding:5px 12px;border-radius:20px;background:var(--accent-lt);color:var(--accent-dk)}
+.cert-list{display:flex;flex-direction:column;gap:10px}
+.cert-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:border-color 0.2s}
+.cert-item:hover{border-color:var(--border-strong)}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px}
+.cert-name{font-size:13px;color:var(--text);line-height:1.4}
+.cert-issuer{font-size:11px;color:var(--text-3);margin-top:2px;font-family:'DM Mono',monospace}
+
+/* CONTACT */
+#contact{border-bottom:1px solid var(--border)}
+.contact-heading{font-family:'Lora',serif;font-size:clamp(30px,5vw,52px);font-weight:600;color:var(--text);line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px}
+.contact-heading em{font-style:italic;color:var(--accent)}
+.contact-sub{font-size:14px;color:var(--text-2);margin-bottom:36px;line-height:1.7}
+.contact-links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
+.contact-link{display:flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);font-size:13px;color:var(--text-2);transition:border-color 0.2s,color 0.2s,box-shadow 0.2s}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);box-shadow:var(--shadow)}
+.contact-link svg{width:18px;height:18px;flex-shrink:0}
+
+/* FOOTER */
+.site-footer{background:var(--text);color:rgba(250,250,247,0.5);padding:28px 0;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.06em}
+.footer-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+
+/* DEVELOPMENT PROJECTS */
+#development{background:var(--bg-alt);border-bottom:1px solid var(--border)}
+.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dev-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color 0.2s,box-shadow 0.25s,transform 0.25s;display:flex;flex-direction:column}
+.dev-card:hover{border-color:var(--accent);box-shadow:var(--shadow-h);transform:translateY(-4px)}
+.dev-body{padding:20px;display:flex;flex-direction:column;gap:14px;flex:1}
+.dev-chips{display:flex;flex-wrap:wrap;gap:6px}
+.proj-stat-chip,.dev-stack-chip{font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;background:var(--accent-lt);color:var(--accent-dk)}
+.dev-desc{font-size:13px;color:var(--text-2);line-height:1.7}
+.dev-decisions{list-style:none;display:flex;flex-direction:column;gap:9px}
+.dev-decisions li{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);line-height:1.6}
+.dev-decisions code{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent-dk);background:var(--accent-lt);padding:1px 5px;border-radius:4px}
+.dev-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);margin-top:7px;flex-shrink:0}
+.dev-demo-note{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.02em}
+.dev-footer{margin-top:auto;display:flex;align-items:center;gap:20px;padding-top:14px;border-top:1px solid var(--border)}
+.dev-link{font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:4px;transition:gap 0.2s}
+.dev-link-secondary{color:var(--text-2)}
+.dev-card:hover .dev-link{gap:8px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:0.08s}
+.reveal-d2{transition-delay:0.16s}
+.reveal-d3{transition-delay:0.24s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-photo-wrap{order:-1}
+  .hero-photo-ring{width:160px;height:160px}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .proj-card:nth-child(4){grid-column:auto}
+  .dev-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .skill-card-centered{max-width:100%}
+  .edu-grid{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;gap:8px}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .projects-grid{grid-template-columns:1fr}
+  .dev-grid{grid-template-columns:1fr}
+  section{padding:60px 0}
+  .container{padding:0 20px}
+  .nav-inner{padding:0 20px}
+  .footer-inner{padding:0 20px;flex-direction:column;gap:8px;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Pratiksha <span>Dandriyal</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#development">Development</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+  <a href="#about" class="dl">About</a>
+  <a href="#skills" class="dl">Skills</a>
+  <a href="#experience" class="dl">Experience</a>
+  <a href="#projects" class="dl">Projects</a>
+  <a href="#development" class="dl">Development</a>
+  <a href="#education" class="dl">Education</a>
+  <a href="#contact" class="dl">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">Data Analyst · Delhi NCR, India</p>
+        <h1 class="hero-name">Pratiksha<br><em>Dandriyal</em></h1>
+        <p class="hero-role">SQL · Power BI · Python · DAX</p>
+        <p class="hero-bio"><strong>Turning raw data into decisions.</strong> I build end-to-end analytics — from data modeling and ETL pipelines to interactive Power BI dashboards — with a focus on answering real business questions, not just building pretty charts. Lately that's extended into <a href="#development" style="color:var(--accent);font-weight:500">building the products themselves</a>, not just the dashboards behind them.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="Pratiksha_Dandriyal_Resume.pdf" download class="btn btn-outline">Download Resume ↓</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring">
+          <img class="hero-photo" src="profile_picture.jpeg" alt="Pratiksha Dandriyal, Data Analyst">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label reveal">About me</p>
+    <h2 class="section-heading reveal">I build analytics that <em>actually get used</em></h2>
+    <p class="about-text reveal">I'm a BTech CSE graduate who builds analytics the way I'd want to receive them: business problem first, clean data pipeline second, and the visualisation last — because a beautiful dashboard built on dirty data is just a pretty lie. At MAX Healthcare, I applied this to 23,000+ patient records across outpatient, ICU, and oncology data, translating clinical business logic into checkable rules and feeding findings into my manager's departmental discussions. I've since built that same discipline into four independent, domain-specific projects — hospital readmission risk, IT helpdesk SLA analytics, SaaS product metrics, and workforce automation risk — each engineered end-to-end from SQL to Power BI, not templated from a Kaggle dataset. What I enjoy most is the debugging trail as much as the finished dashboard — catching a mislabeled measure or a silent SQL bug tells you more about how someone actually works than a clean final chart ever will. That same instinct — real logic over decoration — is why I've also started building outside BI tools: development projects below, built with the same rigor as the dashboards.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Technical skills</p>
+    <h2 class="section-heading reveal">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal reveal-d1">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-6"/></svg>
+          </div>
+          <span class="skill-cat">Analytics & Visualization</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-chip">Power BI</span><span class="skill-chip">DAX</span><span class="skill-chip">Power Query</span><span class="skill-chip">KPI Tracking</span><span class="skill-chip">Data Storytelling</span><span class="skill-chip">EDA</span><span class="skill-chip">Statistical Analysis</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-d2">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v4c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 9v4c0 1.66 4.03 3 9 3s9-1.34 9-3V9"/><path d="M3 13v4c0 1.66 4.03 3 9 3s9-1.34 9-3v-4"/></svg>
+          </div>
+          <span class="skill-cat">Data & SQL</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-chip">SQL</span><span class="skill-chip">SQL Server</span><span class="skill-chip">Data Modelling</span><span class="skill-chip">Star Schema Design</span><span class="skill-chip">ETL Concepts</span><span class="skill-chip">Data Cleaning</span><span class="skill-chip">Relational DB Design</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-d1">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <span class="skill-cat">Programming</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-chip">Python</span><span class="skill-chip">Pandas</span><span class="skill-chip">NumPy</span><span class="skill-chip">Matplotlib</span><span class="skill-chip">HTML / CSS / JS</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-d2">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/></svg>
+          </div>
+          <span class="skill-cat">Tools & Productivity</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-chip">MS Excel (Pivot Tables)</span><span class="skill-chip">Git & GitHub</span><span class="skill-chip">VS Code</span><span class="skill-chip">Jupyter Notebook</span><span class="skill-chip">Google Sheets</span>
+        </div>
+      </div>
+      <div class="skill-card skill-card-centered reveal reveal-d1">
+        <div class="skill-card-head">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4c0 1.24-.6 2.34-1.53 3.03A4 4 0 0118 13a4 4 0 01-1.5 3.12A4 4 0 0112 20a4 4 0 01-4.5-3.88A4 4 0 016 13a4 4 0 011.53-3.97A4 4 0 018 6a4 4 0 014-4z"/><path d="M9 9h.01M15 9h.01M9.5 14a2.5 2.5 0 005 0"/></svg>
+          </div>
+          <span class="skill-cat">AI & Productivity</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-chip">AI-Assisted Coding</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">AI-Augmented EDA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label reveal">Work experience</p>
+    <h2 class="section-heading reveal">Where I've worked</h2>
+    <div>
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-period">Sep 2024 — Dec 2024</p>
+          <p class="exp-company">EasyGov (Surajya Services)</p>
+          <span class="exp-badge">Internship</span>
+        </div>
+        <div>
+          <p class="exp-role">Data & Product Analytics Intern</p>
+          <ul class="exp-bullets">
+            <li>Built a weekly reporting pipeline using SQL, Python, and Excel to extract and clean operational data across 5+ departments — delivering structured insights that directly shaped how the product team prioritised resource allocation.</li>
+            <li>Identified recurring system failure patterns and queue time bottlenecks through SQL trend analysis — findings directly incorporated into scheduling workflow changes by the product team.</li>
+            <li>Translated product team requirements into structured weekly reports using Pandas, NumPy, and Matplotlib covering operational throughput, failure rates, and usage trends.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-period">Feb 2024 — Aug 2024</p>
+          <p class="exp-company">MAX Healthcare · IT Division</p>
+          <span class="exp-badge">Internship</span>
+        </div>
+        <div>
+          <p class="exp-role">Data Analyst Intern</p>
+          <ul class="exp-bullets">
+            <li>Analysed 6 interconnected Excel files with 23,000+ patient records linked across outpatient, inpatient, ICU, lab, and oncology datasets using common keys to surface cross-departmental patterns.</li>
+            <li>Identified a 38-point oncology margin gap across locations (23.3% at Patparganj vs 61.4% at Alexis) despite Patparganj generating the highest absolute revenue (₹18.6L) — flagging a cost-line review opportunity independent of volume.</li>
+            <li>Analysed ₹2.4 crore in ICU revenue across 188 patients and found Room Rent and Lab Services outweighed Surgery/Procedures — reframing ICU cost forecasting around length-of-stay rather than procedure mix.</li>
+            <li>Contributed to business logic for CLABSI, CAUTI, SSI, and VAP infection tracking — matching billed procedures against lab tests within defined time windows, and helped identify why active (non-discharged) admissions were being missed from infection reports.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label reveal">Projects</p>
+    <h2 class="section-heading reveal">Things I've built</h2>
+    <p class="section-intro reveal">Four end-to-end dashboards across healthcare, IT operations, SaaS, and workforce analytics — each with a domain-specific business narrative, not a generic template.</p>
+    <div class="projects-grid">
+
+      <a href="project-helpdesk.html" class="proj-card reveal reveal-d1">
+        <div class="proj-thumb">
+          <svg class="bg-svg" viewBox="0 0 400 160" preserveAspectRatio="none">
+            <polyline points="0,120 40,90 80,110 120,60 160,80 200,40 240,70 280,30 320,55 360,20 400,45" fill="none" stroke="white" stroke-width="2.5"/>
+            <polyline points="0,140 60,130 120,135 180,120 240,128 300,115 360,122 400,108" fill="none" stroke="white" stroke-width="1.2" stroke-dasharray="4 4"/>
+            <circle cx="280" cy="30" r="5" fill="white" opacity="0.9"/>
+            <circle cx="120" cy="60" r="3.5" fill="white" opacity="0.7"/>
+          </svg>
+          <div class="proj-thumb-content">
+            <p class="proj-thumb-label">Project 01</p>
+            <p class="proj-thumb-title">Helpdesk Performance & SLA Analytics</p>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips">
+            <span class="proj-stat-chip">37.5% Network SLA breach</span>
+            <span class="proj-stat-chip">8,000 tickets · 26 months</span>
+          </div>
+          <p class="proj-desc-short">IT managers can't tell whether missed SLAs are a staffing problem, a routing issue, or category-specific. This dashboard makes it visible and actionable.</p>
+          <div class="proj-footer">
+            <div class="proj-stack-mini">
+              <span class="proj-stack-chip">SQL Server</span><span class="proj-stack-chip">Power BI</span><span class="proj-stack-chip">Python</span>
+            </div>
+            <span class="proj-cta">Case Study →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-saas.html" class="proj-card reveal reveal-d2">
+        <div class="proj-thumb" style="background:#0a5c46">
+          <svg class="bg-svg" viewBox="0 0 400 160" preserveAspectRatio="none">
+            <path d="M60,25 L340,25 L265,72 L265,138 L135,138 L135,72 Z" fill="none" stroke="white" stroke-width="2"/>
+            <line x1="60" y1="25" x2="340" y2="25" stroke="white" stroke-width="1.5" opacity="0.5"/>
+            <line x1="95" y1="58" x2="305" y2="58" stroke="white" stroke-width="1.5" opacity="0.35"/>
+            <line x1="135" y1="90" x2="265" y2="90" stroke="white" stroke-width="1.5" opacity="0.25"/>
+          </svg>
+          <div class="proj-thumb-content">
+            <p class="proj-thumb-label">Project 02</p>
+            <p class="proj-thumb-title">SaaS Product Analytics Dashboard</p>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips">
+            <span class="proj-stat-chip">$90K MRR at risk from churn</span>
+            <span class="proj-stat-chip">1 in 4 users retained</span>
+          </div>
+          <p class="proj-desc-short">A SaaS company loses nearly as much revenue to churn as it earns. This dashboard identifies exactly where — and which fix has the highest ROI.</p>
+          <div class="proj-footer">
+            <div class="proj-stack-mini">
+              <span class="proj-stack-chip">SQL Server</span><span class="proj-stack-chip">Power BI</span><span class="proj-stack-chip">Python</span>
+            </div>
+            <span class="proj-cta">Case Study →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-hospital-readmission.html" class="proj-card reveal reveal-d3">
+        <div class="proj-thumb" style="background:#0d5c4a">
+          <svg class="bg-svg" viewBox="0 0 400 160" preserveAspectRatio="none">
+            <rect x="150" y="30" width="100" height="90" fill="none" stroke="white" stroke-width="2"/>
+            <path d="M150,30 L200,8 L250,30" fill="none" stroke="white" stroke-width="2"/>
+            <polyline points="20,120 90,120 105,95 125,140 145,105 165,120 380,120" fill="none" stroke="white" stroke-width="1.8" opacity="0.85"/>
+          </svg>
+          <div class="proj-thumb-content">
+            <p class="proj-thumb-label">Project 03</p>
+            <p class="proj-thumb-title">Hospital Readmission & Patient Flow Analytics</p>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips">
+            <span class="proj-stat-chip">17.5% overall readmission rate</span>
+            <span class="proj-stat-chip">9,093 encounters · 7,500 patients</span>
+          </div>
+          <p class="proj-desc-short">A synthetic, ICMR-calibrated Indian hospital dataset built ground-up across SQL, Python, and Power BI — cross-validated at every layer to identify which readmission risk factors are real, and which a hospital can actually act on.</p>
+          <div class="proj-footer">
+            <div class="proj-stack-mini">
+              <span class="proj-stack-chip">SQL Server</span><span class="proj-stack-chip">Power BI</span><span class="proj-stack-chip">Python</span>
+            </div>
+            <span class="proj-cta">Case Study →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="project-ai-displacement.html" class="proj-card reveal reveal-d1">
+        <div class="proj-thumb" style="background:#0c6149">
+          <svg class="bg-svg" viewBox="0 0 400 160" preserveAspectRatio="none">
+            <rect x="30" y="95" width="36" height="55" fill="white" opacity="0.22" rx="2"/>
+            <rect x="84" y="72" width="36" height="78" fill="white" opacity="0.28" rx="2"/>
+            <rect x="138" y="50" width="36" height="100" fill="white" opacity="0.34" rx="2"/>
+            <rect x="192" y="38" width="36" height="112" fill="white" opacity="0.52" rx="2"/>
+            <rect x="246" y="62" width="36" height="88" fill="white" opacity="0.32" rx="2"/>
+            <rect x="300" y="82" width="36" height="68" fill="white" opacity="0.24" rx="2"/>
+            <line x1="20" y1="150" x2="380" y2="150" stroke="white" stroke-width="1.5" opacity="0.35"/>
+          </svg>
+          <div class="proj-thumb-content">
+            <p class="proj-thumb-label">Project 04</p>
+            <p class="proj-thumb-title">AI Job Displacement & Reskilling</p>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-chips">
+            <span class="proj-stat-chip">41% earned less post-reskilling</span>
+            <span class="proj-stat-chip">13,700+ jobs · 9 countries</span>
+          </div>
+          <p class="proj-desc-short">Reskilling budgets are allocated by assumption. This dashboard quantifies where AI disruption is concentrated and where intervention is most urgent.</p>
+          <div class="proj-footer">
+            <div class="proj-stack-mini">
+              <span class="proj-stack-chip">SQL Server</span><span class="proj-stack-chip">Power BI</span><span class="proj-stack-chip">Python</span>
+            </div>
+            <span class="proj-cta">Case Study →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPMENT -->
+<section id="development">
+  <div class="container">
+    <p class="section-label reveal">Development</p>
+    <h2 class="section-heading reveal">Also building the <em>product side</em></h2>
+    <p class="section-intro reveal">Two front-end projects where the same instincts behind the analytics work — real statistical methods, honest scoping, showing the logic rather than hiding it — get applied to building an actual working product instead of a dashboard.</p>
+    <div class="dev-grid">
+
+      <div class="dev-card reveal reveal-d1">
+        <div class="proj-thumb" style="background:#0b5c49">
+          <svg class="bg-svg" viewBox="0 0 400 160" preserveAspectRatio="none">
+            <line x1="20" y1="40" x2="380" y2="40" stroke="white" stroke-width="1" opacity="0.15"/>
+            <line x1="20" y1="70" x2="380" y2="70" stroke="white" stroke-width="1" opacity="0.15"/>
+            <line x1="20" y1="100" x2="380" y2="100" stroke="white" stroke-width="1" opacity="0.15"/>
+            <line x1="20" y1="130" x2="380" y2="130" stroke="white" stroke-width="1" opacity="0.15"/>
+            <polyline points="20,125 65,115 110,118 155,95 200,90 245,72" fill="none" stroke="white" stroke-width="2.5"/>
+            <polyline points="245,72 290,58 335,48 380,30" fill="none" stroke="white" stroke-width="1.8" stroke-dasharray="5 5" opacity="0.75"/>
+            <circle cx="245" cy="72" r="4" fill="white" opacity="0.9"/>
+          </svg>
+          <div class="proj-thumb-content">
+            <p class="proj-thumb-label">Dev 01</p>
+            <p class="proj-thumb-title">Ledgerline — Expense Tracker</p>
+          </div>
+        </div>
+        <div class="dev-body">
+          <div class="dev-chips">
+            <span class="dev-stack-chip">React</span><span class="dev-stack-chip">Vite</span><span class="dev-stack-chip">Recharts</span><span class="dev-stack-chip">PapaParse</span>
+          </div>
+          <p class="dev-desc">A React expense tracker built around one idea: every insight should be backed by an actual statistical method, not a decorative chart. Categorisation runs on a keyword engine, the Forecast page projects month-end spend using least-squares linear regression, and a Suggestions engine flags outliers by z-score and recurring charges by coefficient of variation. It also handles shared expenses, savings goals, budget pacing, and a printable monthly report — with a dedicated Methodology page documenting exactly how every number is calculated.</p>
+          <ul class="dev-decisions">
+            <li><span class="dev-dot"></span><span>Forecasting uses a real least-squares regression on the month's daily spend rather than a naive average — the same instinct as catching a bad denominator in a Power BI measure.</span></li>
+            <li><span class="dev-dot"></span><span>No backend by design for v1: kept it a zero-setup, client-side demo, with state structured so a database swap later is a contained change, not a rewrite.</span></li>
+          </ul>
+          <p class="dev-demo-note">One-click demo dataset available — no setup needed to explore.</p>
+          <div class="dev-footer">
+            <a href="https://pratikshadandriyal.github.io/ledgerline-app/" target="_blank" rel="noopener" class="dev-link">Live Demo →</a>
+            <a href="https://github.com/pratikshadandriyal/ledgerline-app" target="_blank" rel="noopener" class="dev-link dev-link-secondary">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dev-card reveal reveal-d2">
+        <div class="proj-thumb" style="background:#0f6a52">
+          <svg class="bg-svg" viewBox="0 0 400 160" preserveAspectRatio="none">
+            <rect x="30" y="30" width="26" height="26" fill="white" opacity="0.15"/><rect x="62" y="30" width="26" height="26" fill="white" opacity="0.35"/><rect x="94" y="30" width="26" height="26" fill="white" opacity="0.15"/><rect x="126" y="30" width="26" height="26" fill="white" opacity="0.6"/><rect x="158" y="30" width="26" height="26" fill="white" opacity="0.2"/><rect x="190" y="30" width="26" height="26" fill="white" opacity="0.15"/>
+            <rect x="30" y="62" width="26" height="26" fill="white" opacity="0.4"/><rect x="62" y="62" width="26" height="26" fill="white" opacity="0.15"/><rect x="94" y="62" width="26" height="26" fill="white" opacity="0.7"/><rect x="126" y="62" width="26" height="26" fill="white" opacity="0.3"/><rect x="158" y="62" width="26" height="26" fill="white" opacity="0.5"/><rect x="190" y="62" width="26" height="26" fill="white" opacity="0.15"/>
+            <rect x="30" y="94" width="26" height="26" fill="white" opacity="0.2"/><rect x="62" y="94" width="26" height="26" fill="white" opacity="0.55"/><rect x="94" y="94" width="26" height="26" fill="white" opacity="0.15"/><rect x="126" y="94" width="26" height="26" fill="white" opacity="0.15"/><rect x="158" y="94" width="26" height="26" fill="white" opacity="0.35"/><rect x="190" y="94" width="26" height="26" fill="white" opacity="0.6"/>
+            <path d="M250,110 L285,140 L350,55" fill="none" stroke="white" stroke-width="4" opacity="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="proj-thumb-content">
+            <p class="proj-thumb-label">Dev 02</p>
+            <p class="proj-thumb-title">Field Log — Task Tracker</p>
+          </div>
+        </div>
+        <div class="dev-body">
+          <div class="dev-chips">
+            <span class="dev-stack-chip">HTML</span><span class="dev-stack-chip">CSS</span><span class="dev-stack-chip">JavaScript</span>
+          </div>
+          <p class="dev-desc">A task tracker that goes beyond a checklist by layering in real productivity analytics: a day-streak counter, category and priority completion rates, a 12-week GitHub-style activity heatmap, a 14-day trend drawn on canvas with no charting library, and auto-generated insights like "Work is your most consistent category at 82% completion" — all computed from actual stored task data, not decoration.</p>
+          <ul class="dev-decisions">
+            <li><span class="dev-dot"></span><span>No framework, no bundler, no build step — every function (<code>toggleTask()</code>, <code>computeStreak()</code>, <code>renderAnalytics()</code>) maps directly to a line I can point to and trace in dev tools, with nothing compiled in between.</span></li>
+            <li><span class="dev-dot"></span><span>Data persists via localStorage, framed as a scoped v1 choice rather than a gap — multi-device sync through a small backend is the named next step.</span></li>
+          </ul>
+          <p class="dev-demo-note">One-click demo dataset available — no setup needed to explore.</p>
+          <div class="dev-footer">
+            <a href="https://pratikshadandriyal.github.io/field-log-tracker/" target="_blank" rel="noopener" class="dev-link">Live Demo →</a>
+            <a href="https://github.com/pratikshadandriyal/field-log-tracker" target="_blank" rel="noopener" class="dev-link dev-link-secondary">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label reveal">Education & certifications</p>
+    <h2 class="section-heading reveal">Formally trained, <em>self-driven</em></h2>
+    <div class="edu-grid">
+      <div class="reveal">
+        <div class="edu-card">
+          <p class="edu-degree">B.Tech — Computer Science & Engineering</p>
+          <p class="edu-univ">Dr. APJ Abdul Kalam Technical University, India</p>
+          <div class="edu-chips">
+            <span class="edu-chip">CGPA 8.23 / 10.0</span>
+            <span class="edu-chip">Graduated Sep 2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="cert-list">
+          <div class="cert-item"><div class="cert-dot"></div><div><p class="cert-name">Microsoft Power BI Desktop for Business Intelligence</p><p class="cert-issuer">Udemy · 2026</p></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><p class="cert-name">Python for Data Analysis & Business Intelligence</p><p class="cert-issuer">Udemy · 2026</p></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><p class="cert-name">SQL for Data Analysis: Advanced SQL Querying Techniques</p><p class="cert-issuer">Udemy · 2025</p></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><p class="cert-name">Introduction to AI</p><p class="cert-issuer">IBM SkillsBuild · 2024</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label reveal">Let's connect</p>
+    <h2 class="contact-heading reveal">Open to <em>opportunities</em></h2>
+    <p class="contact-sub reveal">Looking to join a team where I can go beyond building dashboards — owning data pipelines from raw extraction to the final insight.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:pratikshadandriyal@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><polyline points="2,6 12,13 22,6"/></svg>
+        pratikshadandriyal@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/pratikshadandriyal" target="_blank" rel="noopener" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        linkedin.com/in/pratikshadandriyal
+      </a>
+      <a href="https://github.com/pratikshadandriyal" target="_blank" rel="noopener" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        github.com/pratikshadandriyal
+      </a>
+    </div>
+    <a href="Pratiksha_Dandriyal_Resume.pdf" download class="btn btn-primary reveal">Download Resume ↓</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2026 Pratiksha Dandriyal</span>
+    <span>Data Analyst · Delhi NCR, India</span>
+  </div>
+</footer>
+
+<script>
+const toggle=document.getElementById('navToggle'),drawer=document.getElementById('navDrawer');
+toggle.addEventListener('click',()=>{const o=drawer.classList.toggle('open');toggle.classList.toggle('open',o);toggle.setAttribute('aria-expanded',o)});
+document.querySelectorAll('.nav-drawer a').forEach(l=>l.addEventListener('click',()=>{drawer.classList.remove('open');toggle.classList.remove('open');toggle.setAttribute('aria-expanded',false)}));
+const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
